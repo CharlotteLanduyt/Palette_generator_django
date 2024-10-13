@@ -1,0 +1,54 @@
+{% load static %} 
+{% load custom_filters %} 
+
+{% block content %}
+    <div id="{{ tool_id }}" class="tool">
+        <h4>
+            {{ tool_title }}
+            <div>
+                <button class="tool_open"><i class="bi bi-arrows-angle-expand"></i></button>
+                <button class="tool_close"><i class="bi bi-x-circle-fill"></i></button>
+            </div>
+        </h4>
+
+        <div class="expand">
+            <h3>{{ expand_title }}</h3>
+
+            {% if tool_id == 'palettes_samples'%}
+                {% if palette_data %}
+                    <div id="scrollable">
+                        {% for palette in palette_data %}
+                            <div class="palette_sample">
+                                <div>
+                                    {% for colors in palette.palette %}
+                                        <div class="sample_palette_tile" style="background-color: rgb({{ colors.r }}, {{ colors.g }}, {{ colors.b }})"></div>
+                                    {% endfor %}
+                                </div>
+                                <p>
+                                    <span>{{ palette.theme }}</span>
+                                    <span><i class="bi bi-heart"></i></span>
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>Soon a panel of our most beautiful colors</p>
+                {% endif %}
+
+                {% if show_more %}
+                    <button>More ?</button>
+                {% endif %}
+            {% endif %}
+            
+            {% if form_action %}
+                <div>
+                    <form id="form_theme" action="{{ form_action }}" method="post" class="theme_form">
+                        {% csrf_token %}
+                        <input type="text" name="theme" placeholder="Enter a theme">
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,173 @@
+@import url(./home/introduction_window.css);
+@import url(./home/keyframes.css);
+@import url(./home/mediaqueries.css);
+
+#home{
+    width: 95%;
+    margin-top: 70px;
+
+    h1{
+        font-weight: 200;
+        font-size: 7vw;
+        letter-spacing: calc(100%/8);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        span{
+            margin-top: 0.5%;
+            font-weight: 200;
+            padding: 0 5vw;
+            border-radius: 200px;
+            font-family: "Nanum Brush Script", cursive;
+            font-size: 5vw;
+            border: solid 0.5px #2c2b3c;
+        }
+    }
+
+    header{
+        display: flex;
+        height: 75vh;
+        justify-content: center; 
+        align-items: center;
+
+        #introduction{
+            margin-right: 2vw;
+            min-width: 20vw;
+            height: 90%;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+            background-image: url('../../images/tennis.png');
+            background-blend-mode: hard-light;
+            background-size: cover;
+            background-position: -10px -20px;
+            background-repeat: no-repeat;
+
+            #text{
+                background: #fff;
+                padding: 15px 0;
+                font-size: 13px;
+                line-height: 20px;
+                width: 100%;
+            }
+
+            #website_description_button{
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                border-radius: 50%;
+                border: none;
+                background: #fff;
+                padding: 20px;
+                font-size: 15px;
+            }
+        }
+
+        #header_features{
+            min-width: 70vw;
+            height: 90%;
+
+            #wheel_header{
+                height: 50%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .image{
+                    height: 100%;
+                    width: 50%;
+                    border-radius: 250px;
+                    background-blend-mode: hard-light;
+                }
+
+                .image:nth-child(1){
+                    background-image: url('../../images/flowers.png');
+                    background-size: 130%; 
+                    background-repeat: no-repeat;
+                    background-position: -80% bottom;
+                }
+
+                .image:nth-child(2){
+                    margin-left: -20px;
+                    background-image: url('../../images/fleurs_palette_website\ -\ 1.png');
+                    background-size: 50%; 
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+
+                #wheel_header_button{
+                    position: absolute;
+                    background: #fff;
+                    padding: 20px;
+                    border-radius: 50%;
+
+                    #click{
+                        transition: transform ease-in-out 0.5s;
+                    }
+                }
+            }
+
+            #data{
+                height: 50%;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+
+                #theme{
+                    width: 25%;
+                    margin-right: 0.5vw;
+                    padding: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    div{
+                        border: solid 0.5px #2c2b3c;
+                        padding: 10px 25px;
+                        background: #fff;
+                        border-radius: 50px;
+                        font-size: 15px;
+                        transform: rotate(-15deg);
+                        text-align: center;
+                    }
+                }
+
+                #color_theme_values{
+                    display: flex;
+                    width: 70%;
+                    height: 60%;
+
+                    &>div{
+                        width: 50%;
+                        border-radius: 10px;
+                        padding: 20px;
+                        
+                    }
+
+                    #number_colors{
+                        margin-right: 2vw;
+                        position: relative;
+
+                        svg {
+                            position: absolute;
+                            top: 0px;
+                            right: 0px;
+                            transform: rotate(-10deg);
+                            .line {
+                                stroke-dasharray: 1000;
+                                stroke-dashoffset: 1000;
+                                animation: draw 2.5s linear infinite;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

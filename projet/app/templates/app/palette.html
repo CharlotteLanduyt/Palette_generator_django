@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% load custom_filters %} 
+
+{% block content %}
+
+    <section id="section_palette">
+        <div id="workplace">
+            {% include './Palette_includes/sidebar.html'%}
+            
+            {% include './Palette_includes/palette_display.html'%} 
+        </div>
+
+        {% include './Palette_includes/toolbar.html'%}    
+    </section>
+
+    <script src={% static 'app/javascript/palettes.js' %}></script>
+
+{% endblock content %}

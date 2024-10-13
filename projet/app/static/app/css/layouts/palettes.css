@@ -1,0 +1,153 @@
+@import url(./palettes/sidebar.css);
+@import url(./palettes/toolbar.css);
+
+#section_palette {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 10vh;
+    height: 90vh;
+
+    h3{
+        font-size: 18px;
+        font-weight: 200
+    }
+
+    #workplace{
+        border: solid 0.5px #2c2b3c;
+        border-radius: 10px;
+        height: 90%;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+    
+        #palette{
+            width: 70%;
+
+            form {
+                height: 100%;
+                
+                input[type="submit"]{
+                    position: absolute;
+                    left: 2%;
+                    bottom: 5%;
+                }
+
+                &>div{
+                    display: flex;
+                    height: 100%;
+
+                    .vignette_color{
+                        height: 100%;
+                        width: 20%;
+                        display: flex;
+                        justify-content: center;
+                        transition: background ease-in-out 0.5s;
+                        position: relative;
+
+                        &>div{
+                            position: absolute;
+                        }
+
+                        .counter{
+                            top: 1%;
+                            text-align: left;
+                            font-size: 25px;
+                            font-weight: 200;
+                            width: 80%;
+                            display: flex;
+                            align-items: center;
+
+                            span{
+                                font-size: 20px;
+                                margin: 0 3px;
+                                margin-top: 20px;
+                            }
+                        }
+
+                        .button_colors{
+                            bottom: 5%;
+                            width: 90%;
+                            border: none;
+                            background: none;
+                            text-align: center;
+
+                            i{
+                                font-size: 18px;
+                                margin-bottom: 10%;
+                            }
+
+                            .numerics_colors{
+                                font-size: 20px;
+                                pointer-events: none;
+                                height: 0vh;
+                                overflow: hidden;
+                                transition: height ease-in-out 0.5s;
+                        
+                                div{
+                                    margin: 2vh 0;
+                                    font-family: "Nanum Brush Script", cursive;
+                                    font-weight: 200;
+                                    display: flex;
+                                    flex-direction: column;
+
+                                    span{
+                                        font-size: 12px;
+                                        margin: 10px 0;
+                                        font-weight: 200;
+                                    }
+                                }
+                            }
+
+                            .color_range{
+                                font-size: 15px;
+                                font-weight: 200;
+                                margin-top: 10%;
+                            }
+                        }
+
+                        
+                        input[type="color"]{
+                            appearance: none;
+                            padding: none;
+                            height: 100%;
+                            width: 100%;
+                            border: none;
+                            background: none;
+                            
+                        }
+            
+                        input[type="color"]::-webkit-color-swatch {
+                            border: none;
+                            transition: background ease-in-out 0.5s;
+                          }
+                    }
+
+                    .dark{
+                        *{
+                            color: #2c2b3c; 
+                        }
+                        
+                        input[type="color"]{
+                            cursor: url('../../icones/eyedropper.png'), auto;
+                        }   
+                    }
+
+                    .light{
+                        *{
+                            color: #fff; 
+                        } 
+
+                        input[type="color"]{
+                            cursor: url('../../icones/eyedropper_white.png'), auto;
+                        }   
+                    }
+        
+                    
+                }
+                
+            }
+        }
+    }
+}

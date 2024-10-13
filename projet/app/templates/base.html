@@ -1,0 +1,36 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <script src="http://localhost:35729/livereload.js"></script>
+
+</head>
+
+<body>
+    <nav id="principal_nav">
+        <a href={% url 'home' %} id="logo">Palchart <span><i class="bi bi-asterisk"></i></span></a>
+
+        <div>
+            <a href={% url 'palette' %}>Palettes</a>
+            <div></div>
+            <a href="">Account</a>
+        </div>
+    </nav>
+
+    {%block content%} {%endblock%}
+
+
+    <div id='effect'></div>
+</body>
+
+</html>

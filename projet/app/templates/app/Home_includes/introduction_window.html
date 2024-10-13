@@ -1,0 +1,42 @@
+{% load static %} 
+
+{% block content %}
+    <div id="introduction_window">
+        <button onclick="document.getElementById('introduction_window').style.opacity = 0; document.getElementById('introduction_window').style.pointerEvents = 'none';"><i style="color: rgb({{random_theme_colors.0.r}},{{random_theme_colors.0.g}},{{random_theme_colors.0.b}})" class="bi bi-x"></i></button>
+
+        <div class="intro_bubble">
+            <h1 style="color: rgb({{random_theme_colors.0.r}},{{random_theme_colors.0.g}},{{random_theme_colors.0.b}})">What's the point ?</h1>
+
+            <p>Palchart is a vast database containing a multitude of colors linked to different themes, helping you find the perfect color palette for your project. </p>
+            <p>Stop searching for the right mood; we and our users provide it for you. After validating your choice, you contribute to making our website more efficient and powerful.</p>
+            <p style="color: rgb({{random_theme_colors.0.r}},{{random_theme_colors.0.g}},{{random_theme_colors.0.b}})">Get in the vibe !</p>
+        </div>
+
+        <div>
+            <div class="intro_bubble">
+                <div style="background-color: rgb({{random_theme_colors.0.r}},{{random_theme_colors.0.g}},{{random_theme_colors.0.b}})">1</div>
+                <p style="background-color: rgb({{random_theme_colors.0.r}},{{random_theme_colors.0.g}},{{random_theme_colors.0.b}})">Dream big</p>
+            </div>
+
+            <div class="intro_bubble">
+                <div style="background-color: rgb({{random_theme_colors.0.r}},{{random_theme_colors.0.g}},{{random_theme_colors.0.b}})">2</div>
+                <p style="background-color: rgb({{random_theme_colors.0.r}},{{random_theme_colors.0.g}},{{random_theme_colors.0.b}})">Start your project</p>
+            </div>
+
+            <div class="intro_bubble">
+                <div style="background-color: rgb({{random_theme_colors.0.r}},{{random_theme_colors.0.g}},{{random_theme_colors.0.b}})">3</div>
+                <p style="background-color: rgb({{random_theme_colors.0.r}},{{random_theme_colors.0.g}},{{random_theme_colors.0.b}})">Validate your theme</p>
+            </div>
+
+            <div class="intro_bubble">
+                <div style="background-color: rgb({{random_theme_colors.0.r}},{{random_theme_colors.0.g}},{{random_theme_colors.0.b}})">4</div>
+                <p style="background-color: rgb({{random_theme_colors.0.r}},{{random_theme_colors.0.g}},{{random_theme_colors.0.b}})">We now share our colors with you</p>
+            </div>
+
+            <div class="intro_bubble">
+                <div style="background-color: rgb({{random_theme_colors.0.r}},{{random_theme_colors.0.g}},{{random_theme_colors.0.b}})">5</div>
+                <p style="background-color: rgb({{random_theme_colors.0.r}},{{random_theme_colors.0.g}},{{random_theme_colors.0.b}})">And can start breathing colors in each others lifes</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

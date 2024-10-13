@@ -1,0 +1,80 @@
+{% extends 'base.html' %} 
+
+{% load static %} 
+{% load custom_filters %} 
+
+{% block content %}
+    <section id="home">
+        <h1>Make your <span> Style </span> Colorfull</h1>
+
+        <header>
+            <div id="introduction" style="background-color: rgb({{colors.0.r}},{{colors.0.g}},{{colors.0.b}})">
+                <button id="website_description_button" onclick="document.getElementById('introduction_window').style.opacity = 1; document.getElementById('introduction_window').style.pointerEvents = 'auto';">
+                        <i class="bi bi-arrows-angle-expand"></i>
+                    </button>
+
+                <div id="text" >Creating harmonious color palettes that inspire creativity, elevate design, and breathe life into every project.</div>
+            </div>
+
+            <div id="header_features">
+                <div id="wheel_header">
+                    <div class="image" style="background-color: rgb({{colors.4.r}},{{colors.4.g}},{{colors.4.b}})"></div>
+                    <div class="image" style="background-color: rgb({{colors.4.r}},{{colors.4.g}},{{colors.4.b}})"></div>
+
+                    <div id="wheel_header_button">
+                        <div id="click" onClick="send(event)"><i class="bi bi-arrow-clockwise"></i></div>
+                    </div>
+                </div>
+
+                <div id="data">
+                    <div id="theme">
+                        <div>
+                            What's your color ?
+                        </div>
+                    </div>
+
+                    <div id="color_theme_values">
+                        <div id="number_colors" style="background-color: rgb({{colors.3.r}},{{colors.3.g}},{{colors.3.b}}); border: none">
+                            <div class="animation_draw">
+                                <svg width="200" height="230" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                                        <path class="line" d="M 30 30 
+                                                            Q 90 -50, 110 0 
+                                                            Q 130 100, 150 60 
+                                                            Q 170 20, 190 80 
+                                                            Q 210 150, 230 80 
+                                                            Q 250 20, 270 60 
+                                                            Q 290 120, 310 60 
+                                                            Q 330 20, 350 60 
+                                                            Q 370 100, 370 150" 
+                                            stroke-linecap="round" fill="none" stroke="#fff" stroke-width="8"/>
+                                    </svg>
+                            </div>
+                            <p><span>{{color_train|length}}<span>*</span></span> colors</p>
+                        </div>
+
+                        <div id="number_themes" style="background-color: rgb({{colors.1.r}},{{colors.1.g}},{{colors.1.b}}); border: none">
+                            <div class="animation_text">
+                                <p>
+                                    <span>P</span>
+                                    <span>a</span>
+                                    <span>l</span>
+                                    <span>e</span>
+                                    <span>t</span>
+                                    <span>t</span>
+                                    <span>e</span>
+                                </p>
+                            </div>
+                            <p><span>{{theme_train|length}}<span>*</span></span>palettes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        {% include 'app/Home_includes/introduction_window.html' %}
+        
+
+        <script src={% static 'app/javascript/home.js' %}></script>
+    </section>
+{% endblock content %}

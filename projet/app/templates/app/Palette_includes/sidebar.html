@@ -1,0 +1,24 @@
+{% load static %} 
+{% load custom_filters %} 
+
+{% block content%}
+    <div id="side_bar">
+        <div id="theme_title">
+            <h2>
+                {% if theme %} {{theme}} {% else %} Enter a theme, let the magic happen {% endif %}
+            </h2>
+
+            <form style="display: none" id="form_theme" action="{% url 'palette' %}?action=choix_theme" method="post" class="theme_form">
+                {% csrf_token %}
+
+                <input type="text" name="theme" placeholder="Enter a theme">
+
+                <button type="submit">Search</button>
+            </form>
+            
+            <button onClick='document.querySelector("#theme_title h2").style="display:none"; document.querySelector("#theme_title form").style="display:block"; '>Modify your theme</button>
+            <button>Register this wonderfull palette</button> 
+        </div>
+        
+    </div>
+{% endblock content%}

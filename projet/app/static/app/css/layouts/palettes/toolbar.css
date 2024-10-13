@@ -1,0 +1,159 @@
+#tool_table{
+    display: flex;
+    align-items: end;
+    height: 0vh;
+
+
+    p{
+        margin: 15px 0;
+        margin-right: 2vw;
+        font-size: 14px;
+    }
+
+    &>div{
+        border: solid 0.5px #2c2b3c;
+        border-radius: 10px;
+        background-color: #ffffffab;
+        backdrop-filter: blur(3px);
+        overflow: hidden;
+
+        h4{
+            padding: 10px 20px;
+            font-size: 20px;
+            font-family: "Nanum Brush Script", cursive;
+            font-weight: 200;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            div{
+                display: flex;
+                align-items: center;
+                margin-left: 2vw;
+
+                button{
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    margin-left: 1vw;
+    
+                    i{
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+
+        &>div{
+            height: 0vh;
+            overflow: hidden;
+            transition: height ease-in-out 0.5s;
+            padding: 0 20px;
+        }
+
+        .opened{
+            padding: 20px 20px;
+            height: 30vh;
+        }
+
+    }
+
+    #ia_palettes{
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+
+
+            &>input{
+                margin-top: 1vw;
+                border: solid 0.5px #2c2b3c;
+                border-radius: 200px;
+                padding: 5px 20px;
+                font-size: 12px;
+
+            }
+
+            button{
+                border: solid 0.5px #2c2b3c;
+                border-radius: 200px;
+                padding: 5px 20px;
+                background: none;
+                margin-top: 0.5vw;
+                font-size: 10px;
+            }
+        }
+
+    }
+    
+    #palettes_samples{
+        &>div{
+            width: 18vw;
+
+            button {
+                border: solid 0.5px #2c2b3c;
+                background: none;
+                border-radius: 200px;
+                padding: 8px 20px;
+                margin-top: 2vw;
+                background: #fff;
+            }
+
+            #scrollable{
+                padding-right: 30px;
+                position: relative;
+                overflow: hidden scroll;
+                height: 65%;
+                margin-top: 2vh;
+
+                .palette_sample{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 2vh;
+                    height: 100%;
+        
+                    i{
+                        font-size: 13px
+                    }
+
+                    p{
+                        font-size: 20px;
+                        font-weight: 200;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: space-between;
+                        height: 90%;
+                        padding: 0.5vw;
+
+                        span:first-of-type{
+                            writing-mode: vertical-rl;
+                            text-orientation: sideways;
+                            transform: rotate(180deg);
+                            font-family: "Nanum Brush Script", cursive;
+                            font-weight: 200;
+                            font-size: 25px;
+                        }
+                    }
+        
+                    &>div{
+                        width: 100%;
+                        display: flex;
+                        overflow: hidden;
+                        border-radius: 2px;
+                        height: 100%;
+        
+                        .sample_palette_tile{
+                            height: 100%;
+                            width: 20%; 
+                            border-radius: 3px;
+                            margin: 2px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

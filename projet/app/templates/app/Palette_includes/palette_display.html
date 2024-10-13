@@ -1,0 +1,48 @@
+{% load static %} 
+{% load custom_filters %} 
+
+{% block content %}
+
+    <div id="palette">   
+        {% if theme %}
+            <form action="{% url 'palette' %}?action=valider_palette" method="post" id="palette_form">
+                {% csrf_token %} 
+                
+                    <input type="text" value="{{ theme }}" name="theme" style="display:none">
+
+                    <div>
+                        {% for colour in donnees_ia.predicted_palette %}
+                            <div class="vignette_color" id="vignette_couleur_{{ forloop.counter }}" style="background-color: {{ colour|rgb_to_hex }};">
+                                <input type="color" id="couleur_{{ forloop.counter }}" class="input_couleur" name="couleur_{{ forloop.counter }}" value="{{ colour|rgb_to_hex }}">
+
+                                <div class="counter">{{forloop.counter}} <span>*</span></div>
+
+                                <div class="button_colors">
+                                    <i onClick="toggleHeight('colors_{{ forloop.counter }}')" class="bi bi-arrow-bar-up"></i>
+
+                                    <div class="numerics_colors" id="colors_{{ forloop.counter }}">
+                                        <div id="rgb_{{ forloop.counter }}">
+                                        </div>
+                                        <div id="hex_{{ forloop.counter }}">
+                                            <span>hex: </span>
+                                            {{ colour|rgb_to_hex }}
+                                        </div>
+                                        <div id="cmjn_{{ forloop.counter }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="color_range" id="color_range_{{ forloop.counter }}"></div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <input id="envoi_palette" type="submit" value="Keep in mind" />
+            </form>
+        {% else %}
+            
+        {% endif %}
+    </div>
+
+    <script src={% static 'app/javascript/Palettes_include_functions/palettes_display.js' %}></script>
+{% endblock content %}
