@@ -4,9 +4,6 @@ import random
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-import tensorflow as tf
-from tensorflow import keras
-
 from sklearn.preprocessing import OneHotEncoder
 
 
@@ -39,18 +36,16 @@ X = np.array(X)
 y = np.array(y)
 
 
-def create_colors(theme_test):
+def create_colors(theme_test, num_colors):
     if len(themes) < seuil_minimal:
-        num_colors = 5
+        num_colors = int(num_colors)
         predicted_palette = [
             [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
             for _ in range(num_colors)
         ]
         random.shuffle(predicted_palette)
-        result = {
-            'predicted_palette': predicted_palette,
-            'message': 'random'
-        }
+        result = predicted_palette
+        
         return result
     else:
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)

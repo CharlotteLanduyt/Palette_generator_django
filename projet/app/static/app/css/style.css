@@ -17,6 +17,10 @@
     letter-spacing: 2px;
 }
 
+button:hover{
+    cursor: pointer;
+}
+
 body {
     display: flex;
     flex-direction: column;

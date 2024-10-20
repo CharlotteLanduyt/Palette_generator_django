@@ -15,3 +15,11 @@ def rgb_to_hex(rgb):
 
     hex_color = rgb_to_hex(rgb_str)
     return(hex_color)
+
+
+@register.filter(name='to_int')
+def to_int(value):
+    try:
+        return int(value)
+    except (ValueError, TypeError):
+        return 0 

@@ -1,0 +1,30 @@
+{% load static %} 
+{% load custom_filters %} 
+
+{% block content %}
+    <div class="vignette_color" id="vignette_couleur_{{ forloop_counter }}" style="background-color: {{ colour|rgb_to_hex }};">
+        <button id="delete_input" type="button" onclick="deleteColor({{ forloop_counter }})"><i class="bi bi-trash"></i></button>
+        
+
+        <input type="color" id="couleur_{{ forloop_counter }}" class="input_couleur" name="couleur_{{ forloop_counter }}" value="{{ colour|rgb_to_hex }}">
+
+        <div class="counter">{{forloop_counter}} <span>*</span></div>
+
+        <div class="button_colors">
+            <button type="button" onClick="toggleHeight('colors_{{ forloop_counter }}')"><i class="bi bi-arrow-bar-up"></i></button>
+
+            <div class="numerics_colors" id="colors_{{ forloop_counter }}">
+                <div id="rgb_{{ forloop_counter }}">
+                </div>
+                <div id="hex_{{ forloop_counter }}">
+                    <span>hex: </span>
+                    {{ colour|rgb_to_hex }}
+                </div>
+                <div id="cmjn_{{ forloop_counter }}">
+                </div>
+            </div>
+
+            <div class="color_range" id="color_range_{{ forloop_counter }}"></div>
+        </div>
+    </div>
+{% endblock %}

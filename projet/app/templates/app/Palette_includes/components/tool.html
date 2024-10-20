@@ -40,15 +40,12 @@
                 {% endif %}
             {% endif %}
             
-            {% if form_action %}
-                <div>
-                    <form id="form_theme" action="{{ form_action }}" method="post" class="theme_form">
-                        {% csrf_token %}
-                        <input type="text" name="theme" placeholder="Enter a theme">
-                        <button type="submit">Search</button>
-                    </form>
-                </div>
+            {% if tool_id == 'ia_palettes' %}
+                <button onClick="iaPaletteData()">IA magic</button>
             {% endif %}
         </div>
     </div>
+
+    <script src="{% static 'app/javascript/Palettes_functions/palettes_tools.js' %}"></script>
+
 {% endblock %}

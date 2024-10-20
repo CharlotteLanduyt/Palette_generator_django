@@ -25,8 +25,22 @@
         #palette{
             width: 70%;
 
+            #add_color{
+                background: none;
+                border: none;
+                padding: 50px;
+                border: solid 0.5px #2c2b3c9b;
+                float: right;
+
+                i{
+                    font-size: 20px;
+                    color: #2c2b3c9b;
+                }
+            }
+
             form {
                 height: 100%;
+                display: flex;
                 
                 input[type="submit"]{
                     position: absolute;
@@ -36,7 +50,9 @@
 
                 &>div{
                     display: flex;
+                    justify-content: flex-end;
                     height: 100%;
+                    width: 100%;
 
                     .vignette_color{
                         height: 100%;
@@ -50,6 +66,16 @@
                             position: absolute;
                         }
 
+                        #delete_input{
+                            position: absolute;
+                            background: none;
+                            border: none;
+                            font-size: 12px;
+                            top: 3%;
+                            right: 4%;
+                            z-index: 999;
+                        }
+
                         .counter{
                             top: 1%;
                             text-align: left;
@@ -58,6 +84,7 @@
                             width: 80%;
                             display: flex;
                             align-items: center;
+                            pointer-events: none;
 
                             span{
                                 font-size: 20px;
@@ -73,9 +100,14 @@
                             background: none;
                             text-align: center;
 
-                            i{
-                                font-size: 18px;
-                                margin-bottom: 10%;
+                            button{
+                                background: none;
+                                border: none;
+
+                                i{
+                                    font-size: 18px;
+                                    margin-bottom: 10%;
+                                }
                             }
 
                             .numerics_colors{
@@ -104,6 +136,7 @@
                                 font-size: 15px;
                                 font-weight: 200;
                                 margin-top: 10%;
+                                pointer-events: none;
                             }
                         }
 

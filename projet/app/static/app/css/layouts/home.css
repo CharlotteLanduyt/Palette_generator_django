@@ -147,24 +147,8 @@
                         width: 50%;
                         border-radius: 10px;
                         padding: 20px;
-                        
-                    }
-
-                    #number_colors{
                         margin-right: 2vw;
                         position: relative;
-
-                        svg {
-                            position: absolute;
-                            top: 0px;
-                            right: 0px;
-                            transform: rotate(-10deg);
-                            .line {
-                                stroke-dasharray: 1000;
-                                stroke-dashoffset: 1000;
-                                animation: draw 2.5s linear infinite;
-                            }
-                        }
                     }
                 }
             }

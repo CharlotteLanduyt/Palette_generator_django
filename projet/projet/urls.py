@@ -30,4 +30,8 @@ urlpatterns = [
 
     path('get_random_theme_colors/', views.get_random_theme_colors, name='get_random_theme_colors'),
     path('get_session_data/', views.get_session_data, name='get_session_data'),
+    path('ia_palette_choice/', views.ia_palette_choice, name='ia_palette_choice'),
+    path('theme_choice', views.theme_choice, name='theme_choice'),
+    path('palette_update/<int:id>', views.palette_update, name='palette_update'),
+    
 ]

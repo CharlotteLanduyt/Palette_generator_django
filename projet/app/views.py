@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 
+from django.template.loader import render_to_string
 from django.http import JsonResponse
 
 from .models import *
@@ -10,7 +11,6 @@ from . import ia
 
 
 def home(request):
-
     colors = [
                 {'r': 141, 'g': 193, 'b': 77}, 
                 {'r': 114, 'g': 154, 'b': 109}, 
@@ -20,6 +20,7 @@ def home(request):
             ]
 
     return render(request,'app/home.html',{'colors': colors})
+
 
 def get_random_theme_colors(request):
     def rgb_to_hsl(r, g, b):
@@ -110,22 +111,12 @@ def palette(request):
         theme = ""
 
     try:
-        donnees_ia = request.session['donnees_ia']
+        palette = request.session['palette']
     except KeyError:
-        donnees_ia = ""
+        palette = []
+
 
     if request.method == 'POST':
-        if action == 'choix_theme':
-            theme = request.POST.get('theme')
-
-            try:
-                donnees_ia = request.session['donnees_ia']
-            except KeyError:
-                donnees_ia = ia.create_colors(theme)
-            
-            request.session['theme'] = theme
-            request.session['donnees_ia'] = donnees_ia
-
         if action == 'valider_palette':
             theme = request.POST.get('theme')
             new_theme = Theme_train(theme=theme)
@@ -148,10 +139,85 @@ def palette(request):
 
             theme = ""
 
-    return render(request, 'app/palette.html', {'theme': theme, 'donnees_ia': donnees_ia})
+    return render(request, 'app/palette.html', {'theme': theme, 'palette': palette, 'number_color_inputs': len(palette)} )
 
 
 def get_session_data(request):
-    donnees_ia = request.session.get('donnees_ia', None)
+    palette = request.session.get('palette', None)
 
-    return JsonResponse({'donnees_ia': donnees_ia})
+    return JsonResponse({'palette': palette})
+
+
+def ia_palette_choice(request):
+    donnees_ia = ""
+
+    try:
+        theme = request.session['theme']
+        number_color_inputs = len(request.session['palette'])
+
+        donnees_ia = ia.create_colors(theme, number_color_inputs)
+
+        request.session['palette'] = donnees_ia
+
+    except KeyError:
+        print('error data')
+
+    return JsonResponse({'palette': donnees_ia, 'number_color_inputs': len(request.session['palette'])})
+
+
+
+def palette_update(request, id):
+    action = request.GET.get('action')
+    palette = []
+
+    if request.method == 'POST':
+        if action == "update":
+            r = int(request.POST.get('r'))
+            g = int(request.POST.get('g'))
+            b = int(request.POST.get('b'))
+
+            request.session['palette'][id] = [r,g,b]
+            palette = request.session['palette']
+
+
+        if action == "add":
+            request.session['palette'].append([255, 255, 255])
+
+            number_color_inputs = len(request.session['palette'])
+            html = render_to_string("app/Palette_includes/components/color_input.html",{"colour": [255, 255, 255], "forloop_counter": len(request.session['palette'])})
+
+            request.session.modified = True
+            
+            return JsonResponse({'html': html, 'number_color_inputs': number_color_inputs})
+
+
+        if action == "erase":
+            request.session['palette'].pop(int(id)-1)
+
+            request.session.modified = True
+
+            palette = request.session['palette']
+            palette_html = []
+
+            for i, colour in enumerate(palette):
+                html = render_to_string("app/Palette_includes/components/color_input.html",{"colour": colour, "forloop_counter": i+1})
+                palette_html.append(html)
+
+            return JsonResponse({'palette': palette_html, 'number_color_inputs': len(request.session['palette'])})
+        
+
+        request.session.modified = True
+
+    return JsonResponse({'palette': palette, 'number_color_inputs': len(request.session['palette'])})
+
+
+
+def theme_choice(request):
+    theme = request.session['theme']
+
+    if request.method == 'POST':
+        theme = request.POST.get('theme')
+
+        request.session['theme'] = theme
+
+    return JsonResponse({'theme': theme})

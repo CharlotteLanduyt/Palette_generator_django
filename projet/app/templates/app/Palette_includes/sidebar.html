@@ -8,12 +8,12 @@
                 {% if theme %} {{theme}} {% else %} Enter a theme, let the magic happen {% endif %}
             </h2>
 
-            <form style="display: none" id="form_theme" action="{% url 'palette' %}?action=choix_theme" method="post" class="theme_form">
+            <form style="display: none" id="form_theme" action="{% url 'theme_choice' %}" method="post" class="theme_form">
                 {% csrf_token %}
 
                 <input type="text" name="theme" placeholder="Enter a theme">
 
-                <button type="submit">Search</button>
+                <button type="submit" onClick='document.querySelector("#theme_title h2").style="display: block"; document.querySelector("#theme_title form").style="display: none"; '>Search</button>
             </form>
             
             <button onClick='document.querySelector("#theme_title h2").style="display:none"; document.querySelector("#theme_title form").style="display:block"; '>Modify your theme</button>
